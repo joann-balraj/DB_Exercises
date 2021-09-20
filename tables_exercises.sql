@@ -1,5 +1,6 @@
 USE employees;
 SHOW tables;
+SHOW CREATE TABLE employees;
 Describe employees;
 --  Numeric type columns: "emp_no" and "
 -- String type columns: "first-name", "gender", and "last_name"
