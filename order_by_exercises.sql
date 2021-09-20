@@ -1,11 +1,11 @@
 USE employees;
 SELECT * FROM employees WHERE first_name IN ('Irena', 'Vidya', 'Maya') ORDER BY first_name;
--- 2.) First: Irina Reutenauer Last: Vidya Simmen
+-- 2.) (709) First: Irina Reutenauer Last: Vidya Simmen
 USE employees;
 SELECT * FROM employees WHERE first_name IN ('Irena', 'Vidya', 'Maya') ORDER BY first_name, last_name;
--- 3.) First: Irena Acton Last: Vidya Zweizig
+-- 3.) (709) First: Irena Acton Last: Vidya Zweizig
 SELECT * FROM employees WHERE first_name IN ('Irena', 'Vidya', 'Maya') ORDER BY last_name, first_name;
--- 4.) First: Irena Acton Last: Maya Zyda
+-- 4.) (619) First: Irena Acton Last: Maya Zyda
 SELECT * FROM employees WHERE last_name LIKE 'E%' AND last_name LIKE '%E' ORDER BY emp_no;
 -- 5.) 899 employees returned, First: emp. no.: 10021 first name: Ramzi Last name: Erde. Last: emp. no.: 499648 first name: Tadahiro last name: Erde.
 SELECT * FROM employees WHERE last_name LIKE 'E%' AND last_name LIKE '%E' ORDER BY hire_date ASC;
