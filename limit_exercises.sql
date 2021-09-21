@@ -1,4 +1,6 @@
-SELECT DISTINCT title FROM titles;
+USE employees;
+SELECT DISTINCT title FROM titles ORDER BY title DESC;
+-- 1.) Technique Leader, Staff, Senior Staff, Senior Engineer, Manager, Engineer, Assistant Engineer
 SELECT DISTINCT last_name FROM employees ORDER BY last_name DESC LIMIT 10; 
 -- 2.) Zykh, Zyda, Zwicker, Zweizig, Zumaque, Zultner, Zucker, Zuberek, Zschoche, Zongker
 SELECT * FROM employees WHERE hire_date LIKE '199%' AND birth_date LIKE '%-12-25' ORDER BY hire_date LIMIT 5;
