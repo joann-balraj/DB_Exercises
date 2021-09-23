@@ -16,3 +16,12 @@ SELECT DISTINCT CITY FROM STATION WHERE ID % 2 = 0;
 
 SELECT  COUNT(CITY) - COUNT(DISTINCT CITY) 
 FROM STATION;
+
+/*
+    Enter your query here and follow these instructions:
+    1. Please append a semicolon ";" at the end of the query and enter your query in a single line to avoid error.
+    2. The AS keyword causes errors, so follow this convention: "Select t.Field From table1 t" instead of "select t.Field From table1 AS t"
+    3. Type your code immediately after comment. Don't leave any blank line.
+*/Select CITY, CHAR_LENGTH(CITY) FROM STATION
+Where CITY = (Select CITY FROM STATION ORDER BY CHAR_LENGTH(CITY) LIMIT 1)
+OR CHAR_LENGTH(CITY) = (Select CHAR_LENGTH(CITY) FROM STATION ORDER BY CHAR_LENGTH(CITY) DESC LIMIT 1)
