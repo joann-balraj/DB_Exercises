@@ -91,7 +91,7 @@ WHERE de.to_date LIKE '9999%'
 GROUP BY dept_name, dept_no, 'num_employees'
 ORDER BY dept_no ASC;
 
--- 7. Which department has the highest average salary? Hint: Use current not historic information.
+-- Ryans' bonus:
 SELECT d.dept_name, AVG(s.salary) as average_salary
 FROM departments as d 
 JOIN dept_emp as de
@@ -100,7 +100,7 @@ JOIN salaries as s
 ON de.emp_no = s.emp_no
 WHERE s.to_date > NOW() AND de.to_date > NOW() 
 GROUP BY d.dept_name
-order by average_salary desc LIMIT 1;
+order by average_salary desc;
 
 -- 8.Who is the highest paid employee in the Marketing department?
 SELECT first_name, last_name
@@ -139,9 +139,9 @@ JOIN employees as emp
 ON de.emp_no = emp.emp_no
 WHERE dm.to_date > now() AND de.to_date > NOW()
 ORDER BY 'Employee Name' ASC;
-
+USE employees;
 -- 11. BONUS
-SELECT d.dept_name, s.salary, concat(e.first_name, ' ', e.last_name) as full_name
+SELECT d.dept_name, AVG(s.salary) as avg_salary, concat(e.first_name, ' ', e.last_name) as full_name
 FROM departments as d
 JOIN dept_emp as de
 ON d.dept_no = de.dept_no
@@ -150,5 +150,5 @@ ON de.emp_no = s.emp_no
 JOIN employees as e
 ON s.emp_no = e.emp_no
 WHERE de.to_date > NOW() AND s.to_date > NOW()
-ORDER BY d.dept_name, s.salary DESC;
+GROUP BY d.dept_name , s.salary, full_name;
 
