@@ -18,10 +18,9 @@ END AS 'alpha_group'
 FROM employees;
 
 -- 3. How many employees (current or previous) were born in each decade?
-SELECT birth_date,
-	CASE 
-		WHEN birth_date LIKE '195%' THEN '50s'
-	 	WHEN birth_date LIKE '196%' THEN '60s'
-ELSE FALSE
-END AS 'birth_decade'
+SELECT
+	COUNT(CASE WHEN birth_date LIKE '195%' THEN '50s' ELSE NULL END) as '50s',
+	COUNT(CASE WHEN birth_date LIKE '196%' THEN '60s' ELSE NULL END) as '60s'
 FROM employees;
+
+-- BONUS: What is the current average salary for each of the following department groups: R&D, Sales & Marketing, Prod & QM, Finance & HR, Customer Service?
