@@ -1,4 +1,4 @@
-SELECT * FROM employees;
+SELECT * FROM salaries;
 -- 1. Write a query that returns all employees (emp_no), their department number, their start date, their end date, and a new column 'is_current_employee' that is a 1 if the employee is still with the company and 0 if not.
 SELECT emp_no, dept_no, from_date, to_date,
 CASE
@@ -24,3 +24,13 @@ SELECT
 FROM employees;
 
 -- BONUS: What is the current average salary for each of the following department groups: R&D, Sales & Marketing, Prod & QM, Finance & HR, Customer Service?
+SELECT
+	CASE WHEN dept_name IN('Finance', 'Human Resources') Then 'Finance & HR' 
+	WHEN dept_name IN('Sales', 'Marketing') THEN 'Sales & Marketing' 
+	WHEN dept_name IN('Production', 'Quality Management')THEN 'Prod & QM' 
+	WHEN dept_name IN('Research', 'Development') THEN 'R&D' ELSE dept_name END AS dept_group,
+	avg(salary) 'avg_salary'
+FROM departments
+JOIN dept_emp ON dept_emp.dept_no = departments.dept_no
+JOIN salaries ON dept_emp.emp_no = salaries.emp_no
+GROUP BY dept_group;
